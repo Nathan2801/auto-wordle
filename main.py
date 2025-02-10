@@ -1,6 +1,6 @@
 import logging
 
-from sys import argv
+from os import path
 from time import sleep
 
 from selenium import webdriver
@@ -213,7 +213,8 @@ def main():
     wordle = Wordle(driver)
     wordle.setup()
 
-    words = words_from_file("dictionary.txt")
+    here = path.dirname(__file__)
+    words = words_from_file(here + "/dictionary.txt")
     bot = Bot(wordle, words)
 
     try:
